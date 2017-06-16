@@ -1,0 +1,34 @@
+﻿<!doctype html> 
+<html lang="en"> 
+    <head> 
+	    <meta charset="UTF-8" />
+        <meta name="Author" content="ArcticArcade">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui">
+	    <title>Rainbow Explosion</title>
+        <style> 
+		    body { margin: 0; background: #000000;} 
+        </style>
+        <script src="js/phaser.min.js"></script>
+        <script src="js/boot.js"></script>
+        <script src="js/preloader.js"></script>
+        <script src="js/game.js"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            window.onload = function () {
+                var game = new Phaser.Game(640, 960, Phaser.CANVAS, 'game');
+                game.state.add('Boot', BREAKOUT.Boot);
+                game.state.add('Preloader', BREAKOUT.Preloader);
+                game.state.add('Game', BREAKOUT.Game);
+                game.state.start('Boot');
+            };
+            window.addEventListener('scroll', function () {
+                // Do not scroll when keyboard is visible 
+                if (document.activeElement === document.body && window.scrollY > 0) {
+                    document.body.scrollTop = 0;
+                }
+            }, true);
+        </script>
+    </body>
+</html>
